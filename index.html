@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Pinturas de Morena</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fefbd8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff6f61;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+        }
+        header img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+        header .caption {
+            position: absolute;
+            top: 120px;
+            right: 10px;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+        .carousel-inner img {
+            border: 2px solid #ff6f61;
+            max-width: 100%;
+            height: 300;
+            flex-shrink: 0;
+        }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .carousel-control-prev {
+            left: 10px;
+        }
+        .carousel-control-next {
+            right: 10px;
+        }
+        .message-box {
+            margin-top: 20px;
+        }
+        .message-box textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 2px solid #ff6f61;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .message-box button {
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Las Pinturas de Morena</h1>
+        <img src="imagenes_more/morena.jpg" alt="Imagen de Morena">
+        <div class="caption"></div>
+    </header>
+    <main>
+        <div class="content">
+            <h2>Sobre Morena</h2>
+            <p>Morena tiene 16 años, nació en 2007 y tiene síndrome de Down. Es una niña alegre y muy creativa, a quien le encanta pintar y expresar su mundo interior a través del arte.</p>
+            <p>Si deseas ponerte en contacto con Morena, puedes escribirle a su correo: <a href="mailto:morenapc@gmail.com">morenapc@gmail.com</a></p>
+        </div>
+        <div class="content">
+            <h2>Galería de Pinturas</h2>
+            <div class="carousel">
+                <div class="carousel-inner" id="carouselInner">
+                    <img src="imagenes_more/pintura1.jpg" alt="Pintura 1 de Morena">
+                    <img src="imagenes_more/pintura2.jpg" alt="Pintura 2 de Morena">
+                    <img src="imagenes_more/pintura3.jpg" alt="Pintura 3 de Morena">
+                    <!-- Añadir más imágenes según sea necesario -->
+                </div>
+                <button class="carousel-control carousel-control-prev" onclick="prevSlide()">&#9664;</button>
+                <button class="carousel-control carousel-control-next" onclick="nextSlide()">&#9654;</button>
+            </div>
+        </div>
+        <div class="content message-box">
+            <h2>Déjale tu mensaje a Morena</h2>
+            <textarea id="message" placeholder="Escribe tu mensaje aquí..."></textarea>
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </main>
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const carouselInner = document.getElementById('carouselInner');
+            const totalSlides = carouselInner.children.length;
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+            const offset = -currentIndex * 100;
+            carouselInner.style.transform = 'translateX(' + offset + '%)';
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        function sendMessage() {
+            const message = document.getElementById('message').value;
+            const mailtoLink = `mailto:morenapc@gmail.com?subject=Mensaje de un visitante&body=${encodeURIComponent(message)}`;
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+</html>
