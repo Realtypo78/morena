@@ -17,14 +17,16 @@
             color: #fff;
             padding: 10px 0;
             text-align: center;
+            position: relative;
+				overflow: hidden;
         }
-		        header img {
-            position: absolute;
+        header img {
+			border-radius: 50%;
+			width: 100px;
+            height: 100px;
+			position: absolute;
             top: 10px;
             right: 10px;
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
         }
         header .caption {
             position: absolute;
@@ -35,6 +37,24 @@
             text-align: center;
         }
 		
+		@media (max-width: 768px) {
+			header img {
+				position: relative;
+				display: block;
+				margin: 10px auto;
+						}
+			header h1 {
+				margin-top: 20px;
+					}
+			header .caption {
+				position: relative;
+			top: auto;
+			right: auto;
+			text-align: center;
+			margin-top: 10px;
+							}
+		}
+
         main {
             padding: 20px;
         }
@@ -50,12 +70,12 @@
         .carousel-inner {
             display: flex;
             transition: transform 0.5s ease;
-            width: 100%;
+            width: 30%;
         }
         .carousel-inner img {
             border: 2px solid #ff6f61;
             max-width: 100%;
-            height: auto;
+            height: 300;
             flex-shrink: 0;
         }
         .carousel-control {
@@ -93,41 +113,13 @@
             cursor: pointer;
             font-family: 'Courier New', Courier, monospace;
         }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .carousel-inner img {
-                height: auto;
-                max-width: 100%;
-            }
-            .carousel-control {
-                padding: 5px;
-            }
-            .message-box textarea {
-                height: 80px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .carousel-control-prev,
-            .carousel-control-next {
-                top: 40%;
-                padding: 5px;
-            }
-            .message-box textarea {
-                height: 60px;
-            }
-        }
     </style>
 </head>
 <body>
     <header>
         <h1>Las Pinturas de Morena</h1>
-		    <header>
-        <h1>Las Pinturas de Morena</h1>
-        <img src="imagenes_more/morena.jpg" alt="Imagen de Morena">
+        <img src="imagenes_more/morena.jpg" alt="Imagen de Morena" class="header-image">
         <div class="caption"></div>
-    </header>
     </header>
     <main>
         <div class="content">
@@ -142,7 +134,7 @@
                     <img src="imagenes_more/pintura1.jpg" alt="Pintura 1 de Morena">
                     <img src="imagenes_more/pintura2.jpg" alt="Pintura 2 de Morena">
                     <img src="imagenes_more/pintura3.jpg" alt="Pintura 3 de Morena">
-					<img src="imagenes_more/pintura4.jpg" alt="Pintura 4 de Morena">
+					<img src="imagenes_more/pintura4.jpg" alt="Pintura 3 de Morena">
                     <!-- Añadir más imágenes según sea necesario -->
                 </div>
                 <button class="carousel-control carousel-control-prev" onclick="prevSlide()">&#9664;</button>
